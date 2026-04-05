@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But include these directories
+!hypr/
+!hypr/**
+!nvim/
+!nvim/**
+
+# Include .gitignore itself
+!.gitignore
