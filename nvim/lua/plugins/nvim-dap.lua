@@ -61,13 +61,13 @@ return {
 			vim.api.nvim_set_keymap(
 				"n",
 				"<F1>",
-				[[<cmd>lua vim.cmd("!cmake --build out --config Debug -j$(nproc)") require('dap').continue() <CR>]],
+				[[<cmd>lua vim.cmd("!cmake -S . -B out -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && cmake --build out --config Debug -j$(nproc)") require('dap').continue() <CR>]],
 				opts
 			)
 			vim.api.nvim_set_keymap(
 				"n",
 				"<F7>",
-				[[<cmd>lua vim.cmd("!cmake --build out --config Release -j$(nproc)") <CR>]],
+				[[<cmd>lua vim.cmd("!cmake -S . -B out -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && cmake --build out --config Release -j$(nproc)") <CR>]],
 				opts
 			)
 			vim.api.nvim_set_keymap("n", "<F2>", '<cmd>lua require"dap".continue()<CR>', opts)

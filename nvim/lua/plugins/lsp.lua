@@ -154,7 +154,14 @@ return {
 				},
 			},
 			clangd = {
-				cmd = { "clangd", "--compile-commands-dir=/out" },
+				cmd = { "clangd", "--background-index", "--clang-tidy", "--compile-commands-dir=out" },
+				root_dir = require("lspconfig.util").root_pattern("compile_commands.json", ".git"),
+				capabilities = vim.lsp.protocol.make_client_capabilities(),
+
+				init_options = {
+					clangdFileStatus = true,
+					semanticHighlighting = true,
+				},
 			},
 		}
 
