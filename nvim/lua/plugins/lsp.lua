@@ -154,7 +154,7 @@ return {
 				},
 			},
 			clangd = {
-				cmd = { "clangd" },
+				cmd = { "clangd", "--compile-commands-dir=/out" },
 			},
 		}
 
