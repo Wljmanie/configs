@@ -20,7 +20,7 @@ return {
 					request = "launch",
 					program = function()
 						local cwd = vim.fn.getcwd()
-						local out_dir = cwd .. "/out"
+						local out_dir = cwd .. "/out/Debug"
 						local executables = {}
 						local handle = io.popen('find "' .. out_dir .. '" -type f -executable')
 						if handle then
@@ -61,7 +61,13 @@ return {
 			vim.api.nvim_set_keymap(
 				"n",
 				"<F1>",
-				[[<cmd>lua -- Build CMake project in Debug vim.cmd("!cmake --build out --config Debug") require('dap').continue() <CR>]],
+				[[<cmd>lua vim.cmd("!cmake --build out --config Debug -j$(nproc)") require('dap').continue() <CR>]],
+				opts
+			)
+			vim.api.nvim_set_keymap(
+				"n",
+				"<F7>",
+				[[<cmd>lua vim.cmd("!cmake --build out --config Release -j$(nproc)") <CR>]],
 				opts
 			)
 			vim.api.nvim_set_keymap("n", "<F2>", '<cmd>lua require"dap".continue()<CR>', opts)
@@ -81,7 +87,7 @@ return {
 		end,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-neo-tree/nvim-nio",
+			"nvim-neotest/nvim-nio",
 			"rcarriga/nvim-dap-ui",
 			"theHamsta/nvim-dap-virtual-text",
 		},

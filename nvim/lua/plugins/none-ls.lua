@@ -32,7 +32,8 @@ return {
 			require("none-ls.formatting.ruff_format"),
 
 			formatting.clang_format.with({
-				filestypes = { "c", "cpp", "h", "hpp" },
+				filetypes = { "c", "cpp", "h", "hpp" },
+				extra_args = { "--style=file" },
 			}),
 		}
 
